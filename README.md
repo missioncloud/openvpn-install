@@ -1,7 +1,5 @@
 # openvpn-install
 
-[![Travis CI](https://travis-ci.com/angristan/openvpn-install.svg?branch=master)](https://travis-ci.com/angristan/openvpn-install)
-
 OpenVPN installer for Debian, Ubuntu, Fedora, CentOS and Arch Linux.
 
 This script will let you setup your own secure VPN server in just a few seconds.
@@ -13,43 +11,18 @@ You can also check out [wireguard-install](https://github.com/angristan/wireguar
 First, get the script and make it executable :
 
 ```bash
-curl -O https://raw.githubusercontent.com/Angristan/openvpn-install/master/openvpn-install.sh
+curl -O https://raw.githubusercontent.com/missioncloud/openvpn-install/master/openvpn-install.sh
 chmod +x openvpn-install.sh
 ```
 
 Then run it :
 
 ```sh
-./openvpn-install.sh
-```
-
-You need to run the script as root and have the TUN module enabled.
-
-The first time you run it, you'll have to follow the assistant and answer a few questions to setup your VPN server.
-
-When OpenVPN is installed, you can run the script again, and you will get the choice to :
-
-- Add a client
-- Remove a client
-- Uninstall OpenVPN
-
-In your home directory, you will have `.ovpn` files. These are the client configuration files. Download them from your server and connect using your favorite OpenVPN client.
-
-If you have any question, head to the [FAQ](#faq) first.
-
-### Headless install
-
-It's also possible to run the script headless, e.g. without waiting for user input, in an automated manner.
-
-Example usage:
-```bash
-AUTO_INSTALL=y ./openvpn-install.sh
-
-# or
-
 export AUTO_INSTALL=y
 ./openvpn-install.sh
 ```
+
+In your home directory, you will have `.ovpn` files. These are the client configuration files. Download them from your server and connect using your favorite OpenVPN client.
 
 A default set of variables will then be set, by passing the need for user input.
 
@@ -89,75 +62,6 @@ Password-protected clients are not supported by the headless installation method
 - Randomised server certificate name
 - Choice to protect clients with a password (private key encryption)
 - Many other little things!
-
-## Compatibility
-
-The script supports these OS and architectures:
-
-|              | i386 | amd64 | armhf | arm64 |
-| ------------ | ---- | ----- | ----- | ----- |
-|  Arch Linux  |   ❔  |  ✅  |   ❔   |   ❔  |
-|   CentOS 7   |   ❔  |  ✅  |   ❌   |   ✅  |
-|   Debian 8   |   ✅  |  ✅  |   ❌   |   ❌  |
-|   Debian 9   |   ❌  |  ✅  |   ✅   |   ✅  |
-|   Debian 10  |   ❔  |  ✅  |   ✅   |   ❔  |
-|   Fedora 27  |   ❔  |  ✅  |   ❔   |   ❔  |
-|   Fedora 28  |   ❔  |  ✅  |   ❔   |   ❔  |
-| Ubuntu 16.04 |   ✅  |  ✅  |   ❌   |   ❌  |
-| Ubuntu 18.04 |   ❌  |  ✅  |   ✅   |   ✅  |
-| Ubuntu 19.04 |   ❌  |  ✅  |   ✅   |   ✅  |
-
-To be noted:
-
-- It should work on Debian 8+ and Ubuntu 16.04+. But versions not in the table above are not officially supported.
-- The script requires `systemd`.
-- The script is regularly tested against `amd64` only.
-
-## Fork
-
-This script is based on the great work of [Nyr and its contributors](https://github.com/Nyr/openvpn-install).
-
-Since 2016, the two scripts have diverged and are not alike anymore, especially under the hood. The main goal of the script was enhanced security. But since then, the script has been completely rewritten and a lot a features have been added. The script is only compatible with recent distributions though, so if you need to use a very old server or client, I advise using Nyr's script.
-
-## FAQ
-
-**LOOK AT THE [WIKI](https://github.com/angristan/openvpn-install/wiki/FAQ) FOR MORE INFORMATION. PLEASE READ BOTH BEFORE OPENING AN ISSUE.**
-
-**PLEASE do net send me emails or private messages asking for help.** The only place to get help is the issues. Other people may be able to help and in the future, other users may also run into the same issue as you.
-
-**Q:** Which provider do you recommend?
-
-**A:** I recommend these:
-
-- [Vultr](https://goo.gl/Xyd1Sc): Worldwide locations, IPv6 support, starting at $3.50/month
-- [PulseHeberg](https://goo.gl/76yqW5): France, unlimited bandwidth, starting at €3/month
-- [Digital Ocean](https://goo.gl/qXrNLK): Worldwide locations, IPv6 support, starting at $5/month
-
----
-
-**Q:** Which OpenVPN client do you recommend?
-
-**A:** If possible, an official OpenVPN 2.4 client.
-
-- Windows: [The official OpenVPN community client](https://openvpn.net/index.php/download/community-downloads.html).
-- Linux: The `openvpn` package from your distribution. There is an [official APT repository](https://community.openvpn.net/openvpn/wiki/OpenvpnSoftwareRepos) for Debian/Ubuntu based distributions.
-- macOS: [Tunnelblick](https://tunnelblick.net/).
-- Android: [OpenVPN for Android](https://play.google.com/store/apps/details?id=de.blinkt.openvpn).
-- iOS: [The official OpenVPN Connect client](https://itunes.apple.com/us/app/openvpn-connect/id590379981).
-
----
-
-**Q:** Am I safe from the NSA by using your script?
-
-**A:** Please review your threat models. Even if this script has security in mind and uses state-of-the-art encryption, you shouldn't be using a VPN if you want to hide from the NSA.
-
----
-
-**Q:** Is there an OpenVPN documentation?
-
-**A:** Yes, please head to the [OpenVPN Manual](https://community.openvpn.net/openvpn/wiki/Openvpn24ManPage), which references all the options.
-
----
 
 ## Security and Encryption
 
